@@ -1,21 +1,20 @@
-package org.will1184.lambda;
-
-import org.will1184.lambda.model.Usuario;
+package org.will1184.lambda.model;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.SimpleTimeZone;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.logging.SimpleFormatter;
 
-public class Lambda {
+public class EjemploConsumer {
     public static void main(String[] args) {
 
         Consumer<Date> consumer = fecha ->{
-            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yy");
+            SimpleDateFormat f = new SimpleDateFormat("dd-MM-yy, hh.mm.ss a");
             System.out.println(f.format(fecha));
         };
         consumer.accept(new Date());
@@ -53,5 +52,11 @@ public class Lambda {
         };
         System.out.println(proveedor.get());
 
+        consumer(new Date());
+    }
+    static  Consumer<Date> consumer (Date date){
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(f.format(date));
+        return null;
     }
 }
